@@ -1,0 +1,5 @@
+venv/
+tests/
+archive/
+*.pdf
+src/style/Minecraftia-Regular.ttf

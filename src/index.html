@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft LAN</title>
+
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div id="chat-box">
+        <!-- <p>+ Tester just joined.</p> -->
+    </div>
+    <input id="input-bar" type="text" placeholder="Type here to enter messages...">
+
+    <script>
+        let username = prompt("Enter your username:", "");
+
+        const ws = new WebSocket("ws://localhost:8765");
+        const chat = document.getElementById("chat-box");
+        const msg = document.getElementById("input-bar");
+
+        ws.onopen=()=>{
+             ws.send(username);
+        }
+
+        ws.onmessage = (event) => {
+            let p = document.createElement("p");
+            p.textContent = event.data;
+
+            if(event.data.includes("join"))
+                p.classList.add("color-joined");
+            else if(event.data.includes("leave"))
+                p.classList.add("color-leave");
+            else if(event.data.includes("*"))
+                p.classList.add("color-broadcast");
+
+            chat.appendChild(p);
+            chat.scrollTop = chat.scrollHeight;
+        };
+
+        function sendMsg(){
+            if (msg.value.trim() !== "") {
+                ws.send(msg.value);
+                msg.value = "";
+            }
+        }
+
+        msg.addEventListener("keydown", (e) => { if (e.key === 'Enter') sendMsg(); });
+    </script>
+</body>
+</html>
