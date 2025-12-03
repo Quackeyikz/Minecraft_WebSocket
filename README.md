@@ -37,10 +37,10 @@ You can install the Minecraftia font for the look, but it is not necessary. Put 
 ## Credits
 The idea is initiated by the introduction of the [_"Socket Programming with Python"_ by _Rikih Gunawan_](/rikih-socket_python.pdf) e-book. It's a relatively old book that teaches us how exactly computers communicate using different _"languages"_ such as UDP, TCP, FTP, and more.
 
-Special thanks to INDxdmanik for willing to catch strays.
+Special thanks to INDxdmanik for willingly to catch strays.
 
 The font used in this program is Minecraftia, but i will not redistribute it under the free-for-personal-use license. You may get it
 
-**This Program Made by (Open Source):**
-- [NotRez](https://github.com/NotRez)
+**Creators:**
+- [NotRez | Rezdblz](https://github.com/Rezdblz)
 - [Quackeyikz](https://github.com/Quackeyikz)
