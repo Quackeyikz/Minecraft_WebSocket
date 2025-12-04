@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Minecraftia';
     src: url(./Minecraftia-Regular.ttf);
-    font-weight: normal;
+    font-weight: 300;
     font-style: normal;
 }
 
@@ -12,7 +12,7 @@
 
 body {
     /* backdrop-filter: blur(10px); */
-    background-image: url('background.jpg');
+    background-image: url('img/background-0.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -24,7 +24,7 @@ body {
 #chat-box {
     color: white;
     text-shadow: 0px 3px 10px black;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
     font-size: 1rem;
     width: 40%;
     max-height: 80dvh;
@@ -32,20 +32,40 @@ body {
     left: 0;
     position: fixed;
     display: block;
-    padding: 10px 20px;
-    border: none;
+    padding: 0px 15px;
+    border-left: 7px solid rgb(219, 219, 219);
     border-radius: 0;
     letter-spacing: 0.1rem;
     overflow-y: auto;
     overflow-x: hidden;
+    overflow-wrap: break-word;
     text-wrap: wrap;
     line-height: 20px;
+    backdrop-filter: blur(5px);
 }
+
+#chat-box p {
+    padding: 5px 0px;
+    margin: 5px 0px;
+    transform:translateY(5px);
+    overflow: hidden;
+}
+
+::-webkit-scrollbar{
+    background: transparent;
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background: rgba(0,0,0,0.4); /*-- black at 40% opacity --*/
+}
+::-webkit-resizer,
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner { display: none; }
 
 #input-bar {
     text-shadow: 0px 3px 3px black;
     color: whitesmoke;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
     font-size: 1.1rem;
     display: block;
     position: fixed;
@@ -57,6 +77,7 @@ body {
     border-radius: 0;
     letter-spacing: 0.1rem;
     line-height: normal;
+    backdrop-filter: blur(5px);
 }
 
 #input-bar:focus {

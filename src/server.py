@@ -2,7 +2,9 @@ import asyncio
 import websockets
 import random
 from datetime import datetime
+import socket
 
+hostname = socket.gethostname()
 clients = set()
 usernames = {}
 
@@ -49,9 +51,6 @@ async def server_chat():
     while True:
         msg = await loop.run_in_executor(None, input, "> ")
 
-        # if (msg.startswith("/say"))
-        #     msg = msg[4].strip()
-
         broadcast_msg = f"[Server] {msg}"
         print(f"> {broadcast_msg}")
 
@@ -62,6 +61,17 @@ async def server_chat():
                 pass
 
 async def main():
+    print("=== Server IP Addresses ===")
+    ip_list = socket.getaddrinfo(hostname, None, socket.AF_INET)
+
+    seen = set()
+    for item in ip_list:
+        ip = item[4][0]
+        if ip not in seen and ip != '127.0.0.1':
+            print(f"IP: {ip}")
+            seen.add(ip)
+    print(f"IP: {socket.gethostbyname(hostname)}")
+
     async with websockets.serve(handle, "0.0.0.0", 8765):
         print("Server running on ws://0.0.0.0:8765")
         
@@ -70,4 +80,8 @@ async def main():
             server_chat()
         )
 
-asyncio.run(main())
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\n[Server] Shutting down.")
