@@ -37,6 +37,7 @@ body {
     border-radius: 0;
     letter-spacing: 0.1rem;
     overflow-y: auto;
+    overflow-x: hidden;
     text-wrap: wrap;
     line-height: 20px;
 }

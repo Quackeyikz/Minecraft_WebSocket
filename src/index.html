@@ -32,7 +32,7 @@
                 p.classList.add("color-joined");
             else if(event.data.includes("leave"))
                 p.classList.add("color-leave");
-            else if(event.data.includes("*"))
+            else if(event.data.includes("*") || event.data.includes("[Server]"))
                 p.classList.add("color-broadcast");
 
             chat.appendChild(p);

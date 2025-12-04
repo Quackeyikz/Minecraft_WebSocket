@@ -44,22 +44,30 @@ async def handle(ws):
         del usernames[ws]
 
 async def server_chat():
-    loop= asyncio.get_event_loop()
+    loop = asyncio.get_event_loop()
+
     while True:
-        msg=await loop.run_in_executor(None,input,"> ")
+        msg = await loop.run_in_executor(None, input, "> ")
+
+        # if (msg.startswith("/say"))
+        #     msg = msg[4].strip()
+
         broadcast_msg = f"[Server] {msg}"
-        print(broadcast_msg)
+        print(f"> {broadcast_msg}")
+
         for c in clients:
             try:
-                await c.send
+                await c.send(broadcast_msg)
             except:
                 pass
+
 async def main():
     async with websockets.serve(handle, "0.0.0.0", 8765):
         print("Server running on ws://0.0.0.0:8765")
         
         await asyncio.gather(
             asyncio.Future(),# Run forever
-            server_chat
+            server_chat()
         )
+
 asyncio.run(main())
