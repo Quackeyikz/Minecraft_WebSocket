@@ -14,12 +14,11 @@
     <input id="input-bar" type="text" placeholder="Type here to enter messages...">
 
     <script>
-        // Background randomize
-        
         let username = prompt("Enter your username:", "Steve");
         let ip_server = prompt("Enter server IP (Enter to use localhost): ", "localhost");   
         let ws_string="ws://" + ip_server + ":8765";
         
+        // Background randomize
         let bg = "url('style/img/background-" + Math.floor(Math.random() * 15) + ".png')";
         document.body.style.background = "#fff " + bg + " no-repeat center";
         document.body.style.backgroundSize = 'cover';

@@ -22,6 +22,7 @@ async def handle(ws):
             await c.send(f"+ {usernames[ws]} joined.")
                 
         async for msg in ws:
+            # Apabila ingin menambah command lain, bisa ditambahkan di else if.
             if msg.startswith("/set name "):
                 newName = msg[10:].strip()
                 oldName = usernames[ws]
